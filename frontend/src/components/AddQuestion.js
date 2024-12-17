@@ -58,7 +58,7 @@ const AddQuestion = () => {
         const fetchCategories = async () => {
             setLoading(true);
             try {
-                const res = await axios.get("http://localhost:5000/categories");
+                const res = await axios.get("https://kartik-project.onrender.com/categories");
                 setCategories(res.data); // Update categories state
             } catch (err) {
                 console.error("Error fetching categories:", err);

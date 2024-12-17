@@ -5,7 +5,7 @@ const AddCategory = () => {
     const [name, setName] = useState('');
 
     const handleSubmit = async () => {
-        await axios.post('http://localhost:5000/categories/add', { name });
+        await axios.post('https://kartik-project.onrender.com/categories/add', { name });
         alert('Category Added!');
     };
 

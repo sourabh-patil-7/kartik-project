@@ -11,7 +11,7 @@ const ViewQuestions = () => {
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const response = await axios.get("http://localhost:5000/categories");
+                const response = await axios.get("https://kartik-project.onrender.com/categories");
                 console.log(response.data);
                 setCategories(response.data);
             } catch (error) {
@@ -28,7 +28,7 @@ const ViewQuestions = () => {
 
         try {
             const response = await axios.get(
-                `http://localhost:5000/questions/${category._id}`
+                `https://kartik-project.onrender.com/questions/${category._id}`
             );
 
             // Update questions state after fetch completes
