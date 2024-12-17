@@ -11,7 +11,7 @@ app.use('/categories', categoryRoutes);
 app.use('/questions', questionRoutes);
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/kartik')
+mongoose.connect('mongodb+srv://kartik:yTPUigf2HB98nze5@cluster0.zky1n.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0/kartik')
     .then(() => console.log('MongoDB Connected'))
     .catch(err => console.log(err));
 
