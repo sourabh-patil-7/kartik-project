@@ -8,7 +8,7 @@ const app = express();
 app.use(express.json());
 
 const corsOptions = {
-    origin: ["https://kartik-clumpcoder-task.vercel.app/", 'http://localhost:3000'], // Allowed domains
+    origin: ["https://kartik-sourabh-task.vercel.app/", 'http://localhost:3000'], // Allowed domains
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE", // Allowed HTTP methods
     allowedHeaders: ["Content-Type", "Authorization"], // Allowed headers
     credentials: true // Allow cookies or credentials
