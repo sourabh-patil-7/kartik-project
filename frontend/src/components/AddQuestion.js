@@ -79,7 +79,7 @@ const AddQuestion = () => {
         }
 
         try {
-            await axios.post("http://localhost:5000/questions/add", {
+            await axios.post("https://kartik-project.onrender.com/questions/add", {
                 questionText,
                 categoryId,
             });
