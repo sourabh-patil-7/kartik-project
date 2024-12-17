@@ -6,9 +6,16 @@ const questionRoutes = require('./routes/questionRoutes');
 
 const app = express();
 app.use(express.json());
-app.use(cors({
-    origin: ["https://kartik-clumpcoder-task.vercel.app/", 'http://localhost:3000']
-}));
+
+const corsOptions = {
+    origin: ["https://kartik-clumpcoder-task.vercel.app/", 'http://localhost:3000'], // Allowed domains
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE", // Allowed HTTP methods
+    allowedHeaders: ["Content-Type", "Authorization"], // Allowed headers
+    credentials: true // Allow cookies or credentials
+};
+
+app.use(cors(corsOptions));
+
 app.use('/categories', categoryRoutes);
 app.use('/questions', questionRoutes);
 
