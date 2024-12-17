@@ -5,16 +5,18 @@ const categoryRoutes = require('./routes/categoryRoutes');
 const questionRoutes = require('./routes/questionRoutes');
 
 const app = express();
-app.use(express.json());
+
 
 const corsOptions = {
-    origin: ["https://kartik-sourabh-task.vercel.app/", 'http://localhost:3000'], // Allowed domains
+    origin: ["https://kartik-sourabh-task.vercel.app", 'http://localhost:3000'], // Allowed domains
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE", // Allowed HTTP methods
     allowedHeaders: ["Content-Type", "Authorization"], // Allowed headers
     credentials: true // Allow cookies or credentials
 };
 
 app.use(cors(corsOptions));
+
+app.use(express.json());
 
 app.use('/categories', categoryRoutes);
 app.use('/questions', questionRoutes);
