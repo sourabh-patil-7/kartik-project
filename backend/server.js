@@ -10,6 +10,10 @@ app.use(cors());
 app.use('/categories', categoryRoutes);
 app.use('/questions', questionRoutes);
 
+app.get('/', (req, res) => {
+    res.send("Hello I am on Home PageJS");
+})
+
 // Connect to MongoDB
 mongoose.connect('mongodb+srv://kartik:yTPUigf2HB98nze5@cluster0.zky1n.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0/kartik')
     .then(() => console.log('MongoDB Connected'))
