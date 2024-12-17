@@ -11,7 +11,9 @@ const ViewQuestions = () => {
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const response = await axios.get("https://kartik-project.onrender.com/categories");
+                const response = await axios.get(
+                    "https://kartik-project.onrender.com/categories"
+                );
                 console.log(response.data);
                 setCategories(response.data);
             } catch (error) {
@@ -23,47 +25,59 @@ const ViewQuestions = () => {
 
     // Fetch questions by category
     const fetchQuestions = async (category) => {
-        setQuestions([]); // Reset questions immediately when a new category is selected
-        setSelectedCategory(category); // Set the selected category
+        setQuestions([]);
+        setSelectedCategory(category);
 
         try {
             const response = await axios.get(
                 `https://kartik-project.onrender.com/questions/${category._id}`
             );
-
-            // Update questions state after fetch completes
             setQuestions(response.data);
         } catch (error) {
             console.error("Error fetching questions:", error);
-            setQuestions([]); // Ensure questions remain empty on error
+            setQuestions([]);
         }
     };
 
-
     return (
-        <div className="flex">
+        <div className="flex flex-col md:flex-row min-h-screen bg-gray-100">
             {/* Category Navigator */}
-            <CategoryNavigator
-                categories={categories}
-                onSelectCategory={fetchQuestions}
-            />
+            <div className="w-full md:w-1/4 bg-white shadow-md p-4">
+                <h2 className="text-lg font-semibold mb-4 text-gray-700">Categories</h2>
+                <CategoryNavigator
+                    categories={categories}
+                    onSelectCategory={fetchQuestions}
+                />
+            </div>
 
-            {/* Display Questions */}
+            {/* Questions Section */}
             <div className="flex-1 p-6">
-                <h2 className="text-2xl font-bold mb-4">
-                    Questions in {selectedCategory.name || "Select a category"}
-                </h2>
-                {questions.length > 0 ? (
-                    <ul className="list-disc pl-5">
-                        {questions.map((q, index) => (
-                            <li key={index} className="mb-2">
-                                {q.questionText}
-                            </li>
-                        ))}
-                    </ul>
-                ) : (
-                    <p>No questions found for this category.</p>
-                )}
+                <div className="bg-white rounded-lg shadow-lg p-6">
+                    <h2 className="text-2xl font-bold mb-4 text-gray-800">
+                        {selectedCategory.name
+                            ? `Questions in ${selectedCategory.name}`
+                            : "Select a Category"}
+                    </h2>
+
+                    {questions.length > 0 ? (
+                        <ul className="list-none space-y-3">
+                            {questions.map((q, index) => (
+                                <li
+                                    key={index}
+                                    className="bg-gray-50 p-4 border rounded-md shadow-sm hover:bg-gray-100 transition duration-300"
+                                >
+                                    <span className="text-gray-700 font-medium">
+                                        {q.questionText}
+                                    </span>
+                                </li>
+                            ))}
+                        </ul>
+                    ) : (
+                        <p className="text-gray-500 text-center">
+                            No questions found for this category.
+                        </p>
+                    )}
+                </div>
             </div>
         </div>
     );
